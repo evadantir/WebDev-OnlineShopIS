@@ -8,6 +8,21 @@ class BarangViewSet(viewsets.ModelViewSet):
     queryset = Barang.objects.all()
     serializer_class = BarangSerializer
 
+    #edited module from @triayudapurnama
+    def get_queryset(self):
+        """
+        This view should return a list of all the purchases
+        for the currently authenticated user.
+        """
+        queryset = Barang.objects.all()
+        tipeBarang = self.request.query_params.get('kode_tipe',None)
+        if tipeBarang is not None:
+            queryset = queryset.filter(kode_tipe=tipeBarang)
+        kodeBarang = self.request.query_params.get('kode_barang',None)
+        if kodeBarang is not None:
+            queryset = queryset.filter(kode_barang=kodeBarang)
+        return queryset
+
 class BarangPesananViewSet(viewsets.ModelViewSet):
     queryset = BarangPesanan.objects.all()
     serializer_class = BarangPesananSerializer
