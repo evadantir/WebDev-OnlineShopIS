@@ -31,22 +31,6 @@ class CustomerViewSet(viewsets.ModelViewSet):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
 
-class TransaksiViewSet(viewsets.ModelViewSet):
-    queryset = Transaksi.objects.all()
-    serializer_class = TransaksiSerializer
-
-class TipeBarangViewSet(viewsets.ModelViewSet):
-    queryset = TipeBarang.objects.all()
-    serializer_class = TipeBarangSerializer
-
-class ProvinsiViewSet(viewsets.ModelViewSet):
-    queryset = Provinsi.objects.all()
-    serializer_class = ProvinsiSerializer
-
-class KotaViewSet(viewsets.ModelViewSet):
-    queryset = Kota.objects.all()
-    serializer_class = KotaSerializer
-
 class DetailBarangViewSet(viewsets.ModelViewSet):
     queryset = DetailBarang.objects.all()
     serializer_class = DetailBarangSerializer
@@ -54,3 +38,35 @@ class DetailBarangViewSet(viewsets.ModelViewSet):
 class DaftarAlamatViewSet(viewsets.ModelViewSet):
     queryset = DaftarAlamat.objects.all()
     serializer_class = DaftarAlamatSerializer
+
+class KotaViewSet(viewsets.ModelViewSet):
+    queryset = Kota.objects.all()
+    serializer_class = KotaSerializer
+
+class LoginViewSet(APIView):
+    def get(self,request,format=None):
+        queryset = Customer.objects.all()
+        email = self.request.query_params.get('email',None)
+        password = self.request.query_params.get('password',None)
+        queryset = Customer.objects.filter(email = email).filter(password = password)
+		#queryset = Pelanggan.objects.filter(password = field_pass) kalo OR
+		#serializer_class = LoginSerializer()
+		#return Response({'received data': request.data}, status=status.HTTP_201_CREATED)
+        c = queryset.count()
+        if c > 0:
+            return HttpResponse(serializer_class.serialize(queryset))
+        else:
+            return Response({'username dan password salah'})
+		#return Response({'username': username})
+
+class ProvinsiViewSet(viewsets.ModelViewSet):
+    queryset = Provinsi.objects.all()
+    serializer_class = ProvinsiSerializer
+
+class TipeBarangViewSet(viewsets.ModelViewSet):
+    queryset = TipeBarang.objects.all()
+    serializer_class = TipeBarangSerializer
+
+class TransaksiViewSet(viewsets.ModelViewSet):
+    queryset = Transaksi.objects.all()
+    serializer_class = TransaksiSerializer
