@@ -2,29 +2,30 @@ from .models import *
 from rest_framework import serializers
 
 class BarangSerializer(serializers.ModelSerializer):
+    kode_tipe = serializers.StringRelatedField(read_only=True)
+
     class Meta:
         model = Barang
         fields = '__all__'
-        depth = 1
+        #depth = 1
 
 class BarangPesananSerializer(serializers.ModelSerializer):
     class Meta:
         model = BarangPesanan
         fields = '__all__'
-        depth = 1
+        #depth = 1
 
 class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Customer
         fields = '__all__'
-        depth = 1
+        #depth = 1
 
 class TransaksiSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transaksi
         fields = '__all__'
-        depth = 1
-
+        #depth = 1
 
 class TipeBarangSerializer(serializers.ModelSerializer):
     class Meta:
@@ -50,4 +51,4 @@ class DaftarAlamatSerializer(serializers.ModelSerializer):
     class Meta:
         model = DaftarAlamat
         fields = '__all__'
-        depth = 1
+        #depth = 1
