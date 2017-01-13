@@ -132,7 +132,7 @@ class DaftarAlamat(models.Model):
         return self.id_alamat
 
 class DetailBarang(models.Model):
-    kode_barang = models.ForeignKey(Barang, models.DO_NOTHING, db_column='KODE_BARANG', primary_key=True)  # Field name made lowercase.
+    kode_barang = models.ForeignKey(Barang, models.DO_NOTHING, db_column='KODE_BARANG', primary_key=True,related_name='detail_barang')  # Field name made lowercase.
     warna = models.CharField(db_column='WARNA', max_length=50)  # Field name made lowercase.
     bahan = models.CharField(db_column='BAHAN', max_length=20)  # Field name made lowercase.
     foto_barang = models.CharField(db_column='FOTO_BARANG', max_length=1024)  # Field name made lowercase.
@@ -143,7 +143,7 @@ class DetailBarang(models.Model):
         db_table = 'detail_barang'
 
     def __str__(self):
-        return self.kode_barang
+        return '%s: %s: %s: %s' % (self.warna,self.bahan,self.foto_barang,self.stock)
 
 class DjangoAdminLog(models.Model):
     action_time = models.DateTimeField()

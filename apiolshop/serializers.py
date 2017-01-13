@@ -3,6 +3,8 @@ from rest_framework import serializers
 
 class BarangSerializer(serializers.ModelSerializer):
     kode_tipe = serializers.PrimaryKeyRelatedField(queryset=TipeBarang.objects.all())
+    detail_barang = serializers.StringRelatedField(many=True,read_only=True)
+    
     class Meta:
         model = Barang
         fields = '__all__'
