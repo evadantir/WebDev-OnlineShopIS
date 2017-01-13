@@ -135,7 +135,7 @@ class DetailBarang(models.Model):
     kode_barang = models.ForeignKey(Barang, models.DO_NOTHING, db_column='KODE_BARANG', primary_key=True,related_name='detail_barang')  # Field name made lowercase.
     warna = models.CharField(db_column='WARNA', max_length=50)  # Field name made lowercase.
     bahan = models.CharField(db_column='BAHAN', max_length=20)  # Field name made lowercase.
-    foto_barang = models.CharField(db_column='FOTO_BARANG', max_length=1024)  # Field name made lowercase.
+    foto_barang = models.ImageField(db_column='FOTO_BARANG', upload_to = "image/fotobarang")  # Field name made lowercase.
     stock = models.SmallIntegerField(db_column='STOCK', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
