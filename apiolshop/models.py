@@ -130,7 +130,7 @@ class DaftarAlamat(models.Model):
         db_table = 'daftar_alamat'
 
     def __str__(self):
-        return self.id_alamat
+        return self.alamat
 
 class DetailBarang(models.Model):
     kode_barang = models.ForeignKey(Barang, models.DO_NOTHING, db_column='KODE_BARANG')  # Field name made lowercase.
