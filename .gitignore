@@ -50,6 +50,9 @@ coverage.xml
 *.mo
 *.pot
 
+# Backup Stuff:
+backupmodels.py
+
 # Django stuff:
 *.log
 local_settings.py
