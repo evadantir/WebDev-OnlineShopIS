@@ -19,7 +19,7 @@ from rest_framework_swagger.views import get_swagger_view
 from .views import *
 
 router = routers.DefaultRouter()
-router.register(r'barang',BarangViewSet)
+router.register(r'barang',BarangViewSet,base_name="Barang")
 router.register(r'barangpesanan',BarangPesananViewSet)
 router.register(r'transaksi',TransaksiViewSet)
 router.register(r'tipebarang',TipeBarangViewSet)

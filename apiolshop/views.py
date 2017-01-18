@@ -3,11 +3,9 @@ from rest_framework.views import APIView
 from .models import *
 from .serializers import *
 from .permissions import *
-from passlib.hash import pbkdf2_sha256
 
 # Create your views here.
 class BarangViewSet(viewsets.ModelViewSet):
-    queryset = Barang.objects.all()
     serializer_class = BarangSerializer
 
     #edited module from @triayudapurnama
@@ -23,6 +21,9 @@ class BarangViewSet(viewsets.ModelViewSet):
         kodeBarang = self.request.query_params.get('kode_barang',None)
         if kodeBarang is not None:
             queryset = queryset.filter(kode_barang=kodeBarang)
+        namaBarang = self.request.query_params.get('nama_barang',None)
+        if namaBarang is not None:
+            queryset = queryset.filter(nama_barang=namaBarang)
         return queryset
 
 class BarangPesananViewSet(viewsets.ModelViewSet):

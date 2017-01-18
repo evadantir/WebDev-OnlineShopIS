@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     21-Dec-16 05:27:43 AM                        */
+/* Created on:     18/01/2017 18:01:03                          */
 /*==============================================================*/
 
 
@@ -29,13 +29,13 @@ drop table if exists TRANSAKSI;
 /*==============================================================*/
 create table BARANG
 (
+   BAHAN                varchar(20) not null,
    KODE_BARANG          varchar(5) not null,
    KODE_TIPE            varchar(5) not null,
    NAMA_BARANG          varchar(15) not null,
    DESKRIPSI_BARANG_    varchar(1024) not null,
    HARGA_BARANG         numeric(8,0) not null,
    WAKTU_DATANG_KATALOG datetime not null,
-   UKURAN               varchar(8) not null,
    primary key (KODE_BARANG)
 );
 
@@ -45,9 +45,10 @@ create table BARANG
 create table BARANG_PESANAN
 (
    KODE_BARANG          varchar(5) not null,
+   ID_DETAIL            char(3) not null,
    KODE_TRANSAKSI       char(10) not null,
    ID_BARANG_PESANAN    char(2) not null,
-   primary key (KODE_BARANG, KODE_TRANSAKSI, ID_BARANG_PESANAN)
+   primary key (KODE_BARANG, ID_DETAIL, KODE_TRANSAKSI, ID_BARANG_PESANAN)
 );
 
 /*==============================================================*/
@@ -81,11 +82,12 @@ create table DAFTAR_ALAMAT
 create table DETAIL_BARANG
 (
    KODE_BARANG          varchar(5) not null,
+   ID_DETAIL            char(3) not null,
    WARNA                varchar(50) not null,
-   BAHAN                varchar(20) not null,
    FOTO_BARANG          varchar(1024) not null,
    STOCK                smallint,
-   primary key (KODE_BARANG)
+   UKURAN               varchar(8) not null,
+   primary key (KODE_BARANG, ID_DETAIL)
 );
 
 /*==============================================================*/
@@ -152,8 +154,8 @@ create table TRANSAKSI
 alter table BARANG add constraint FK_BERTIPE foreign key (KODE_TIPE)
       references TIPE_BARANG (KODE_TIPE) on delete restrict on update restrict;
 
-alter table BARANG_PESANAN add constraint FK_BARANGDIPESAN foreign key (KODE_BARANG)
-      references BARANG (KODE_BARANG) on delete restrict on update restrict;
+alter table BARANG_PESANAN add constraint FK_BARANGDIPESAN foreign key (KODE_BARANG, ID_DETAIL)
+      references DETAIL_BARANG (KODE_BARANG, ID_DETAIL) on delete restrict on update restrict;
 
 alter table BARANG_PESANAN add constraint FK_PESANANTRANSAKSI foreign key (KODE_TRANSAKSI)
       references TRANSAKSI (KODE_TRANSAKSI) on delete restrict on update restrict;

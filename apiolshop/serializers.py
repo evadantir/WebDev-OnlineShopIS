@@ -1,6 +1,6 @@
 from .models import *
 from rest_framework import serializers
-from django.contrib.auth import get_user_model
+#from django.contrib.auth import get_user_model
 
 class BarangSerializer(serializers.ModelSerializer):
     kode_tipe = serializers.PrimaryKeyRelatedField(queryset=TipeBarang.objects.all())
@@ -19,7 +19,7 @@ class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Customer
         fields = '__all__'
-
+"""
     def create(self, validated_data):
         customer = Customer(
             email=validated_data['email'],
@@ -29,7 +29,7 @@ class CustomerSerializer(serializers.ModelSerializer):
         customer.set_password(validated_data['password'])
         customer.save()
         return customer
-
+"""
 class TransaksiSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transaksi
