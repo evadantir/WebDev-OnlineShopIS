@@ -6,7 +6,7 @@ from .permissions import *
 
 # Create your views here.
 class BarangViewSet(viewsets.ModelViewSet):
-    permission_classes = [IsOwnerOrReadOnly]
+    #permission_classes = [IsOwnerOrReadOnly]
     serializer_class = BarangSerializer
 
     #edited module from @triayudapurnama
@@ -28,27 +28,27 @@ class BarangViewSet(viewsets.ModelViewSet):
         return queryset
 
 class BarangPesananViewSet(viewsets.ModelViewSet):
-    permission_classes = [OnlyCustomer]
+    #permission_classes = [OnlyCustomer]
     queryset = BarangPesanan.objects.all()
     serializer_class = BarangPesananSerializer
 
 class CustomerViewSet(viewsets.ModelViewSet):
-    permission_classes = [CustomerPostPermission]
+    #permission_classes = [CustomerPostPermission]
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
 
 class DetailBarangViewSet(viewsets.ModelViewSet):
-    permission_classes = [IsOwnerOrReadOnly]
+    #permission_classes = [IsOwnerOrReadOnly]
     queryset = DetailBarang.objects.all()
     serializer_class = DetailBarangSerializer
 
 class DaftarAlamatViewSet(viewsets.ModelViewSet):
-    permission_classes = [CustomerPostPermission]
+    #permission_classes = [CustomerPostPermission]
     queryset = DaftarAlamat.objects.all()
     serializer_class = DaftarAlamatSerializer
 
 class KotaViewSet(viewsets.ModelViewSet):
-    permission_classes = [IsOwnerOrReadOnly]
+    #permission_classes = [IsOwnerOrReadOnly]
     queryset = Kota.objects.all()
     serializer_class = KotaSerializer
 
@@ -69,16 +69,16 @@ class LoginViewSet(APIView):
 		#return Response({'username': username})
 
 class ProvinsiViewSet(viewsets.ModelViewSet):
-    permission_classes = [IsOwnerOrReadOnly]
+    #permission_classes = [IsOwnerOrReadOnly]
     queryset = Provinsi.objects.all()
     serializer_class = ProvinsiSerializer
 
 class TipeBarangViewSet(viewsets.ModelViewSet):
-    permission_classes = [IsOwnerOrReadOnly]
+    #permission_classes = [IsOwnerOrReadOnly]
     queryset = TipeBarang.objects.all()
     serializer_class = TipeBarangSerializer
 
 class TransaksiViewSet(viewsets.ModelViewSet):
-    permission_classes = [OnlyCustomer]
+    #permission_classes = [OnlyCustomer]
     queryset = Transaksi.objects.all()
     serializer_class = TransaksiSerializer

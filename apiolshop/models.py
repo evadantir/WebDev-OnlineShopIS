@@ -218,7 +218,7 @@ class Provinsi(models.Model):
 
 class TipeBarang(models.Model):
     kode_tipe = models.CharField(db_column='KODE_TIPE', primary_key=True, max_length=5)  # Field name made lowercase.
-    tipe_barang = models.CharField(db_column='TIPE_BARANG', max_length=6)  # Field name made lowercase.
+    tipe_barang = models.CharField(db_column='TIPE_BARANG', max_length=15)  # Field name made lowercase.
 
     class Meta:
         managed = False
