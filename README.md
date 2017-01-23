@@ -3,7 +3,7 @@ Repository ini dibuat untuk menyelesaikan salah satu tugas mata kuliah Pengemban
 
 # Teknologi yang digunakan
 - Django Rest Framework untuk Back End Sistem
-- Angular2 untuk Front End Sistem
+- Angular2 untuk Front End Sistem : https://github.com/anggiend/Angular2OnlineShop
 
 # Kontributor
 - Eva Danti Rahmanita (BackEnd)
