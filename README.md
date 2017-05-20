@@ -7,6 +7,6 @@ Repository ini dibuat untuk menyelesaikan salah satu tugas mata kuliah Pengemban
 
 # Kontributor
 - Eva Danti Rahmanita (BackEnd)
-- Anggi Nur Dhamayanti @anggiend (FrontEnd)
-- Hilda Annisa Nur Mauludine @hildanisa (FrontEnd)
-- Mutiara Citra Wordstary @wordstary (FrontEnd)
+- Anggi Nur Dhamayanti [@anggiend](https://github.com/anggiend/) (FrontEnd)
+- Hilda Annisa Nur Mauludine [@hildanisa](https://github.com/hildanisa/) (FrontEnd)
+- Mutiara Citra Wordstary [@wordstary](https://github.com/wordstary/) (FrontEnd)
